@@ -1,0 +1,1329 @@
+PROJECT SPEC: Sunshine World Kids Rhyme & Story App – Initial Wireframe Prototype
+
+Goal:
+Build an initial clickable/prototype wireframe for a kids’ rhyme and storytelling app called “Sunshine World”. This prototype is UI/UX-focused only. Do NOT implement backend/server communication, authentication, background sync, security, real account login, cloud storage, or SD card writing logic yet. Use local/static media files and mock data.
+
+The prototype should demonstrate:
+1. App navigation structure
+2. Home screen
+3. Rhymes library
+4. Stories library
+5. Playlist overview in Kid Mode
+6. Parent PIN access screen
+7. Playlist detail/editor in Parent Mode
+8. Player screen with scene-based visual read-along
+9. Register Toy screen
+10. OTP verification / claim device screen
+
+Use the supplied screenshots as the visual design reference. Use this spec as the UX and screen behavior guide.
+
+
+==================================================
+1. APP NAME / BRANDING
+==================================================
+
+App name:
+Sunshine World
+
+Brand feeling:
+A magical, safe, cheerful children’s audio world for rhymes, stories, playlists, and toy content management.
+
+Visual tone:
+- Soft 3D cartoon style
+- Rounded glossy UI components
+- Pastel colors
+- Warm, magical, child-safe
+- Parent-friendly but playful
+- Storybook landscape backgrounds
+- Wooden bottom navigation dock
+- Big readable typography
+- Minimal visual clutter
+- Large touch targets
+
+Mascot:
+Toto the Talking Toy
+
+Toto visual description:
+- Round pastel blue toy/speaker character
+- Cream face
+- Big shiny blue eyes
+- Rosy cheeks
+- Friendly smile
+- Small antenna/knob on top
+- Circular speaker grille on belly
+- Colorful buttons: pink play button, yellow star button, green music note button
+- Used as helper/guide character across screens
+
+
+==================================================
+2. GLOBAL NAVIGATION
+==================================================
+
+Bottom dock must be present on main app screens.
+
+Bottom dock items, exactly in this order:
+1. Home
+2. Rhymes
+3. Stories
+4. Playlists
+5. Parents
+
+Icons:
+- Home: house icon
+- Rhymes: music note icon
+- Stories: open book icon
+- Playlists: playlist/folder/list icon
+- Parents: adult + child icon
+
+Selected tab:
+- Highlight with blue glowing rounded tile/background
+- Keep other tabs visible but unselected
+
+Removed/Not used in prototype:
+- Explore
+- Rewards
+- Safe Space
+
+Screen routing:
+- Home tab -> Home screen
+- Rhymes tab -> Rhymes library screen
+- Stories tab -> Stories library screen
+- Playlists tab -> Playlists overview screen in Kid Mode by default
+- Parents tab -> Parent Access PIN screen unless Parent Mode is already unlocked
+
+
+==================================================
+3. APP MODES
+==================================================
+
+There are two UI modes:
+
+A. Kid Mode – default
+Available actions:
+- Browse Rhymes
+- Browse Stories
+- Play individual items
+- Open Playlists
+- Play playlists
+- Open player
+
+Hidden in Kid Mode:
+- Add to Playlist
+- Create Playlist
+- Rename Playlist
+- Delete Playlist
+- Remove playlist item
+- Reorder playlist item
+- Export to SD card
+- Toy registration management, except through Parents flow
+
+B. Parent Mode – mock unlocked state
+Parent Mode is unlocked after entering mock PIN.
+
+Available actions:
+- Add items to playlist
+- Rename playlist
+- Remove playlist items
+- Reorder playlist items
+- Export playlist to SD card
+- Register/claim toy
+- Manage playlist details
+
+Prototype behavior:
+- Use a simple mock PIN such as 1234.
+- After PIN entry, set local UI state: parentMode = true.
+- Parent Mode can be reset by refresh or an “Exit Parent Mode” mock control if added.
+- No real authentication.
+
+
+==================================================
+4. DESIGN SYSTEM
+==================================================
+
+Overall style:
+- Bright fantasy landscape backgrounds
+- Sky blue gradients
+- Fluffy clouds
+- Hills, flowers, rainbow, castle motifs
+- Rounded cream/white content cards
+- Wooden bottom navigation dock
+- Glossy buttons
+- Soft shadows
+- Large icons
+- Large readable labels
+
+Recommended colors:
+- Sky blue: #5EC9FF / #74D5FF
+- Deep blue: #267EDB
+- Sunshine yellow: #FFD34D
+- Warm orange: #FFB347
+- Pink: #FF6FAE
+- Lavender/purple: #8E63E9
+- Mint green: #77D96B
+- Cream card: #FFF6E8
+- Dark readable text: #3B2A20
+- Secondary purple text: #6651B8
+- Wooden dock brown: #A9662D / #D8944B
+
+Typography:
+- Use rounded, kid-friendly font.
+- If custom font unavailable, use system fallback:
+  - Primary: Nunito, Baloo 2, Quicksand, Fredoka, or system sans-serif
+- Titles should be large and bubbly.
+- Body text should be clear and readable.
+
+Button style:
+- Minimum height: 48px
+- Rounded corners: 18–28px
+- Soft shadow
+- Icon + label where useful
+- Use large play buttons for child actions
+
+Cards:
+- Rounded corners: 20–30px
+- Cream/white background
+- Soft drop shadow
+- Slight inner highlight/gloss if easy
+- Avoid cramped spacing
+
+Touch target:
+- Minimum 44px
+- Prefer 56px+ for child-facing controls
+
+
+==================================================
+5. LOCAL MOCK MEDIA FILES TO PROVIDE
+==================================================
+
+Use local assets only.
+
+Suggested folder structure:
+
+/assets
+  /images
+    bg_sunshine_world.png
+    mascot_toto.png
+    home_continue_star.png
+    category_animals.png
+    category_abc.png
+    category_numbers.png
+    category_bedtime.png
+    category_action.png
+    category_phonics.png
+    category_festivals.png
+    category_moral.png
+    category_adventure.png
+    category_mythology.png
+    category_funny.png
+    category_friendship.png
+    playlist_bedtime_mix.png
+    playlist_animal_fun.png
+    playlist_abc_time.png
+    playlist_travel_tunes.png
+    playlist_story_favorites.png
+    thumb_jungle_friends.png
+    thumb_hop_bunny.png
+    thumb_butterfly_dance.png
+    thumb_elephant_march.png
+    thumb_lion_roar.png
+    thumb_little_lion_story.png
+    thumb_kind_elephant_story.png
+    thumb_brave_bunny_story.png
+    thumb_milo_monkey_story.png
+    thumb_butterfly_big_day.png
+    player_scene_1.png
+    player_scene_2.png
+    player_scene_3.png
+    player_scene_4.png
+    player_scene_5.png
+    toy_device_card.png
+    phone_mockup.png
+
+  /audio
+    twinkle_twinkle_little_star.mp3
+    jungle_friends_song.mp3
+    hop_bunny_hop.mp3
+    butterfly_dance.mp3
+    ellie_elephant_march.mp3
+    lion_roar_song.mp3
+    little_lion_learns_to_roar.mp3
+    brave_little_bunny.mp3
+
+If exact images are not available, use placeholders that match the names and layout. The prototype should still work with placeholder images.
+
+Media behavior:
+- Player should use local audio files.
+- For prototype, use one working audio track for the player, preferably twinkle_twinkle_little_star.mp3.
+- Scene images should change based on hardcoded timestamps.
+- Transcript timing can be hardcoded.
+
+
+==================================================
+6. MOCK DATA MODEL
+==================================================
+
+Use local JSON/mock arrays.
+
+Content item fields:
+
+ContentItem:
+{
+  id: string,
+  type: "rhyme" | "story",
+  title: string,
+  category: string,
+  duration: string,
+  durationSeconds: number,
+  thumbnail: string,
+  audioSrc: string,
+  downloaded: boolean,
+  isNew?: boolean,
+  isPopular?: boolean
+}
+
+Category:
+{
+  id: string,
+  label: string,
+  type: "rhyme" | "story",
+  icon: string
+}
+
+Playlist:
+{
+  id: string,
+  title: string,
+  description?: string,
+  coverImage: string,
+  itemIds: string[],
+  totalDuration: string,
+  maxItems: 50
+}
+
+Limits:
+- Maximum playlists: 10
+- Maximum items per playlist: 50
+
+For prototype:
+- Hardcode 5 playlists.
+- No real persistence required unless easy with localStorage.
+- If using localStorage, store mock playlists locally only.
+
+
+==================================================
+7. SCREEN 1 – HOME
+==================================================
+
+Purpose:
+Entry dashboard for kids and parents.
+
+Bottom dock:
+Home selected.
+
+Layout:
+Top:
+- Greeting bubble: “Hi, Little Star!”
+- Large title: “Sunshine World”
+- Subtitle: “Listen, learn & imagine”
+- Settings gear icon at top-right
+
+Hero:
+- Toto mascot waving on left or top area
+- Continue Listening card:
+  - Title: “Continue Listening”
+  - Item: “Twinkle Twinkle Little Star”
+  - Type/duration: “Rhyme • 1:45”
+  - Progress: 60%
+  - Play button
+
+Main shortcuts:
+- Large card: Rhymes
+  - Pink card
+  - Music note illustration
+  - Navigates to Rhymes screen
+- Large card: Stories
+  - Blue card
+  - Open book illustration
+  - Navigates to Stories screen
+
+Featured Playlists:
+- Section title: “Featured Playlists”
+- “See All” link navigates to Playlists
+- Show 3 cards:
+  1. Bedtime Mix – 12 songs/items
+  2. Animal Fun – 15 songs/items
+  3. ABC Time – 10 songs/items
+
+Recently Added:
+- Show 2 small horizontal cards:
+  1. “I’m a Little Teapot” – Rhyme • 1:32
+  2. “The Three Little Pigs” – Story • 6:12
+
+Interactions:
+- Tap Rhymes card -> Rhymes screen
+- Tap Stories card -> Stories screen
+- Tap playlist card -> Playlist overview or playlist detail in Kid Mode
+- Tap Continue Listening play -> Player screen
+
+
+==================================================
+8. SCREEN 2 – RHYMES LIBRARY
+==================================================
+
+Purpose:
+Browse rhyme categories and list rhymes.
+
+Bottom dock:
+Rhymes selected.
+
+Top:
+- Back arrow
+- Search bar: “Search rhymes”
+- Settings gear
+- Page title: “Rhymes”
+- Toto helper bubble: “Tap to play!”
+
+Category row:
+Horizontal scrollable round icons.
+Visible examples:
+1. Animals – selected
+2. ABC
+3. Numbers
+4. Bedtime
+5. Action
+6. Phonics
+7. Festivals
+
+Behavior:
+- Tapping category highlights it.
+- List below updates based on selected category.
+- For prototype, only Animals needs to have full mock list.
+
+Filter chips:
+- All selected by default
+- Popular
+- New
+- Downloaded
+
+Rhyme list cards:
+Each card includes:
+- Thumbnail
+- Title
+- Label: Rhyme
+- Duration
+- Play button
+- Optional downloaded indicator
+
+Visible mock items:
+1. Jungle Friends Song – Rhyme – 1:45 – downloaded
+2. Hop Bunny Hop – Rhyme – 1:28
+3. Butterfly Dance – Rhyme – 1:32
+4. Ellie Elephant March – Rhyme – 1:36 – downloaded
+5. Lion Roar Song – Rhyme – 1:30
+
+Kid Mode behavior:
+- Only show Play button.
+- Do not show Add to Playlist button.
+
+Parent Mode optional behavior:
+- If parentMode === true, optionally show small “+ Playlist” button on cards.
+- This may be added later; not essential for initial wireframe.
+
+Interactions:
+- Tap play -> Player screen
+- Tap search -> filter local list
+- Tap category -> update highlighted category and list
+- Tap Downloaded chip -> show only downloaded mock items
+
+
+==================================================
+9. SCREEN 3 – STORIES LIBRARY
+==================================================
+
+Purpose:
+Browse story categories and list stories.
+
+Bottom dock:
+Stories selected.
+
+Top:
+- Back arrow
+- Search bar: “Search stories”
+- Settings gear
+- Page title: “Stories”
+- Toto helper bubble: “Choose a story!”
+
+Category row:
+Horizontal scrollable round icons.
+Visible examples:
+1. Moral
+2. Animals – selected
+3. Bedtime
+4. Adventure
+5. Mythology
+6. Funny
+7. Friendship
+
+Filter chips:
+- All selected by default
+- Popular
+- New
+- Downloaded
+
+Story list cards:
+Each card includes:
+- Thumbnail
+- Title
+- Label: Story
+- Duration
+- Read/play button, preferably open-book icon
+- Optional downloaded indicator
+
+Visible mock items:
+1. The Little Lion Learns to Roar – Story – 4:12
+2. Ellie the Kind Elephant – Story – 5:08 – downloaded
+3. The Brave Little Bunny – Story – 4:36
+4. Milo Monkey Shares – Story – 3:58 – downloaded
+5. The Butterfly’s Big Day – Story – 4:45
+
+Kid Mode behavior:
+- Only show read/play button.
+- Do not show Add to Playlist button.
+
+Interactions:
+- Tap story row/play -> Player screen
+- Tap category -> update highlighted category
+- Tap filters -> filter local mock list
+
+
+==================================================
+10. SCREEN 4 – PLAYLISTS OVERVIEW, KID MODE
+==================================================
+
+Purpose:
+Children can browse and play playlists, but cannot edit.
+
+Bottom dock:
+Playlists selected.
+
+Top:
+- Back arrow
+- Page title: “Playlists”
+- Subtitle: “Your favorite mixes”
+- Settings gear
+- Toto helper bubble: “Tap a playlist to play!”
+
+Playlist cards:
+Show vertical list of rounded cards.
+
+Each card includes:
+- Cover image
+- Playlist title
+- Item count like “12 / 50”
+- Total duration
+- 2–3 stacked mini thumbnails
+- Big Play All button
+
+Visible playlists:
+1. Bedtime Mix
+   - 12 / 50
+   - 30 min
+   - Play All
+2. Animal Fun
+   - 15 / 50
+   - 36 min
+   - Play All
+3. ABC Time
+   - 10 / 50
+   - 25 min
+   - Play All
+4. Travel Tunes
+   - 14 / 50
+   - 32 min
+   - Play All
+5. Story Favorites
+   - 18 / 50
+   - 45 min
+   - Play All
+
+Kid Mode note:
+At bottom above dock:
+“Ask a parent to edit playlists. You can play all your favorite mixes here!”
+
+Hidden in Kid Mode:
+- Create Playlist
+- Edit Playlist
+- Delete
+- Export to SD Card
+- Add Items
+- Reorder
+
+Interactions:
+- Tap Play All -> Player screen with first item in playlist
+- Tap playlist card -> Playlist detail in Kid Mode, or directly play if detail not yet implemented
+- Tap Parents tab -> Parent Access PIN screen
+
+
+==================================================
+11. SCREEN 5 – PARENT ACCESS PIN
+==================================================
+
+Purpose:
+Unlock Parent Mode.
+
+Bottom dock:
+Parents selected.
+
+Top:
+- Back arrow
+- Page title: “Parent Access”
+- Lock icon
+- Settings gear
+
+Main card:
+- Shield/lock icon
+- Text:
+  “Enter your 4-digit PIN
+   to unlock Parent Mode”
+- Four PIN circles
+- Numeric keypad 0–9
+- Delete/backspace key
+
+Info note:
+“Parent Mode allows playlist editing, downloads, and SD card export.”
+
+Mascot:
+- Toto peeking from side or small corner.
+
+Mock behavior:
+- PIN can be 1234.
+- As user taps digits, fill circles.
+- On correct PIN:
+  - set parentMode = true
+  - navigate to Playlist Detail / Parent Mode screen OR Parents management area
+- On wrong PIN:
+  - shake card or show small error: “Incorrect PIN. Try again.”
+
+No real auth.
+
+Interactions:
+- Tap numeric keys -> update PIN state
+- Tap delete -> remove digit
+- Enter 1234 -> unlock Parent Mode
+
+
+==================================================
+12. SCREEN 6 – PLAYLIST DETAIL / EDITOR, PARENT MODE
+==================================================
+
+Purpose:
+Parent can manage one playlist and export it to SD card.
+
+Bottom dock:
+Playlists selected.
+
+Top:
+- Badge: “Parent Mode On”
+- Subtext: “Unlocked for management & export”
+- Back arrow
+- Playlist cover image
+- Title: “Bedtime Mix”
+- Count: “12 / 50 items”
+- Small SD card icon
+
+Action buttons:
+1. Add Items
+   - Text: “Add rhymes or stories”
+2. Rename
+   - Text: “Edit playlist name”
+3. Export to SD Card
+   - Text: “Copy all items to TF / SD card”
+   - Purple prominent button
+
+Playlist item list:
+Each row includes:
+- Row number
+- Thumbnail
+- Title
+- Type
+- Duration
+- Downloaded/saved indicator if applicable
+- Trash/remove button
+- Reorder drag handle
+
+Visible items:
+1. Twinkle Twinkle Little Star – Rhyme – 1:45 – downloaded
+2. Sleepy Moon Song – Rhyme – 1:38 – downloaded
+3. The Sleepy Bunny – Rhyme – 1:27
+4. Starry Night Story – Story – 6:12 – downloaded
+5. Soft Cloud Lullaby – Rhyme – 1:52 – downloaded
+
+Export status card:
+- Green check icon
+- Text:
+  “Ready to export”
+  “12 items will be copied to TF / SD card.”
+- SD card card:
+  “SD Card (16GB)”
+  “8.2 GB free”
+  progress/storage bar
+
+Helper note:
+“Toto: Parent Mode unlocked! You can add, reorder, remove items and export playlists.”
+
+Mock behavior:
+- Add Items opens a simple modal listing local rhymes/stories with checkboxes.
+- Rename opens simple modal/input.
+- Trash removes item from local mock list.
+- Reorder can be non-functional visually or implemented via drag if easy.
+- Export button shows a mock progress modal:
+  “Exporting…”
+  then “Export complete!”
+- No real SD card writing.
+
+
+==================================================
+13. SCREEN 7 – PLAYER / READ-ALONG SCREEN
+==================================================
+
+Purpose:
+Play local audio with scene-changing visuals and live read-along transcript.
+
+This is a core differentiator.
+
+Bottom dock:
+Can remain visible with Rhymes selected if playing a rhyme.
+If playing a story, Stories selected.
+For prototype, use Rhymes selected.
+
+Top:
+- Back arrow
+- Small badge: “Now Playing”
+- Title: “Twinkle Twinkle Little Star”
+- Right-side icon/button:
+  - Lyrics On
+  - book/lyrics icon
+
+Main hero scene:
+- Large rounded scene image area occupying upper half.
+- Use local scene image based on current timestamp.
+- Show badge:
+  “Scene 2 / 5”
+- Example scene:
+  Night sky, smiling star, moon, clouds, cottage, sparkles.
+
+Scene behavior:
+Use hardcoded scene timeline for prototype.
+
+Example:
+[
+  { scene: 1, start: 0, end: 15, image: player_scene_1.png },
+  { scene: 2, start: 15, end: 35, image: player_scene_2.png },
+  { scene: 3, start: 35, end: 55, image: player_scene_3.png },
+  { scene: 4, start: 55, end: 75, image: player_scene_4.png },
+  { scene: 5, start: 75, end: 105, image: player_scene_5.png }
+]
+
+When current audio time reaches new scene:
+- Update background scene image
+- Highlight selected scene thumbnail
+- Use soft fade transition if possible
+
+Transcript/read-along panel:
+- Rounded cream card overlapping bottom of scene
+- Label: “Read Along”
+- Show max 2 lines at a time
+
+Example lines:
+Line 1: “Twinkle twinkle little star”
+Line 2: “How I wonder what you are”
+
+Word highlighting behavior:
+Use hardcoded word timings for prototype.
+
+Visual states:
+- Past words: dim purple
+- Current word: bright pink/yellow capsule highlight
+- Upcoming words: dark readable text
+
+Example:
+“Twinkle twinkle little star”
+If current word is “little”:
+- “Twinkle twinkle” = dim purple
+- “little” = pink rounded highlight with white text
+- “star” = dark text
+
+Controls:
+- Progress bar
+- Elapsed time: 00:18
+- Total time: 01:45
+- Star-shaped slider handle if possible
+- Replay 10s button
+- Previous button
+- Large central Play/Pause button
+- Next button
+- Volume button
+
+Scene thumbnail strip:
+- Show 5 small thumbnails
+- Label them 1–5
+- Highlight current scene
+- Tapping thumbnail jumps to scene start time
+
+Interactions:
+- Play/pause local audio
+- Progress updates with audio currentTime
+- Scene changes based on time
+- Word highlighting updates based on time
+- Replay 10s subtracts 10 seconds
+- Previous/next moves to previous/next scene or track
+- Lyrics On button toggles transcript panel visible/hidden
+
+
+==================================================
+14. SCREEN 8 – REGISTER YOUR TOY
+==================================================
+
+Purpose:
+Parent enters phone number and device code to claim toy.
+
+Bottom dock:
+Parents selected.
+
+Top:
+- Back arrow
+- Title: “Register Your Toy”
+- Subtitle: “Link your toy to your mobile number”
+
+Main illustration:
+- Smartphone showing Sunshine World
+- Toto toy mascot/device
+- Device code card
+- Sample device code: TT-4829-XY
+
+Form fields:
+1. Phone Number
+   Placeholder: +91 98XXXXXX12
+2. Device Code
+   Placeholder: TT-4829-XY
+   Add small help icon “?”
+
+Helper text:
+“Find the device code on the toy card or inside the box.”
+
+Primary CTA:
+“Send OTP”
+
+Secondary link:
+“Need help finding the code?”
+
+Info note:
+“We’ll send a one-time password to verify your phone and claim this toy.”
+
+Prototype behavior:
+- No real OTP sending.
+- On Send OTP, navigate to Verify OTP screen.
+- Basic validation only:
+  - phone number field not empty
+  - device code field not empty
+- Show inline errors if empty.
+
+
+==================================================
+15. SCREEN 9 – VERIFY OTP / CLAIM DEVICE
+==================================================
+
+Purpose:
+Mock verification and device claim.
+
+Bottom dock:
+Parents selected.
+
+Top:
+- Back arrow
+- Title: “Verify OTP”
+- Subtitle:
+  “We sent a 6-digit code to +91 98XXXXXX12”
+
+Main card:
+- Toto mascot
+- Text: “Claiming Sunshine Toy”
+- Badge:
+  “Device code TT-4829-XY”
+
+OTP input:
+- Six rounded boxes
+- For illustration, can prefill some digits or leave empty
+- Numeric input behavior preferred
+
+Primary CTA:
+“Verify & Claim Device”
+
+Secondary:
+- “Resend OTP”
+- Countdown: “Resend in 00:27”
+
+Info note:
+“Once verified, this toy will be linked to your mobile number.”
+
+Prototype behavior:
+- Accept mock OTP: 274812 or 123456.
+- On correct OTP, show success modal:
+  “Toy linked successfully!”
+  Buttons:
+  - Go Home
+  - Open Parents
+- On wrong OTP, show error:
+  “Invalid OTP. Please try again.”
+- Resend OTP resets countdown visually only.
+- No real OTP/server communication.
+
+
+==================================================
+16. PLAYLIST RULES FOR PROTOTYPE
+==================================================
+
+Playlist constraints:
+- Max playlists: 10
+- Max items per playlist: 50
+- Display count as current / 50
+
+Kid Mode:
+- Can open and play playlists
+- Cannot edit
+
+Parent Mode:
+- Can edit playlist
+- Can add/remove/reorder
+- Can export
+
+Adding to playlist:
+For initial prototype, add item via Parent Mode only.
+When item is added:
+- Mark item as downloaded = true locally
+- Add item to selected playlist if count < 50
+- If playlist is full, show message:
+  “Playlist is full. Maximum 50 items allowed.”
+
+Creating playlists:
+Optional for initial wireframe.
+If implemented:
+- Show Create Playlist button only in Parent Mode
+- Limit total playlists to 10
+
+
+==================================================
+17. LOCAL STATE ONLY
+==================================================
+
+Use local UI state and mock data.
+
+Do NOT implement:
+- backend API calls
+- user authentication
+- real OTP
+- real device claim
+- server media generation
+- real file downloads
+- real SD card export
+- isolates/background sync
+- security/auth flows
+- encryption
+- cloud storage
+
+Allowed:
+- local mock JSON
+- localStorage for persistence if easy
+- static media files
+- local audio playback
+- local UI state
+- mock success/error messages
+
+
+==================================================
+18. REQUIRED CLICKABLE FLOWS
+==================================================
+
+Flow A: Basic browsing
+Home -> Rhymes -> select category -> tap rhyme -> Player
+
+Flow B: Story browsing
+Home -> Stories -> select category -> tap story -> Player
+
+Flow C: Playlist kid use
+Home -> Playlists -> tap Play All -> Player
+
+Flow D: Parent unlock
+Parents -> enter PIN 1234 -> Parent Mode unlocked -> Playlist Editor
+
+Flow E: Playlist export mock
+Parent Mode Playlist Editor -> Export to SD Card -> mock progress -> success message
+
+Flow F: Toy registration
+Parents or Parent Mode -> Register Your Toy -> enter phone/device code -> Send OTP -> Verify OTP -> enter mock OTP -> success
+
+
+==================================================
+19. SAMPLE MOCK CONTENT
+==================================================
+
+RHYME CATEGORIES:
+[
+  "Animals",
+  "ABC",
+  "Numbers",
+  "Bedtime",
+  "Action",
+  "Phonics",
+  "Festivals",
+  "Nature",
+  "Good Habits",
+  "Fun Songs"
+]
+
+STORY CATEGORIES:
+[
+  "Moral",
+  "Animals",
+  "Bedtime",
+  "Adventure",
+  "Mythology",
+  "Funny",
+  "Friendship",
+  "Family",
+  "Nature",
+  "School",
+  "Kindness",
+  "Courage",
+  "Festival",
+  "Science",
+  "Daily Life"
+]
+
+RHYME ITEMS:
+[
+  {
+    id: "rhyme_jungle_friends",
+    type: "rhyme",
+    title: "Jungle Friends Song",
+    category: "Animals",
+    duration: "1:45",
+    durationSeconds: 105,
+    thumbnail: "/assets/images/thumb_jungle_friends.png",
+    audioSrc: "/assets/audio/jungle_friends_song.mp3",
+    downloaded: true,
+    isPopular: true
+  },
+  {
+    id: "rhyme_hop_bunny",
+    type: "rhyme",
+    title: "Hop Bunny Hop",
+    category: "Animals",
+    duration: "1:28",
+    durationSeconds: 88,
+    thumbnail: "/assets/images/thumb_hop_bunny.png",
+    audioSrc: "/assets/audio/hop_bunny_hop.mp3",
+    downloaded: false
+  },
+  {
+    id: "rhyme_butterfly_dance",
+    type: "rhyme",
+    title: "Butterfly Dance",
+    category: "Animals",
+    duration: "1:32",
+    durationSeconds: 92,
+    thumbnail: "/assets/images/thumb_butterfly_dance.png",
+    audioSrc: "/assets/audio/butterfly_dance.mp3",
+    downloaded: false
+  },
+  {
+    id: "rhyme_elephant_march",
+    type: "rhyme",
+    title: "Ellie Elephant March",
+    category: "Animals",
+    duration: "1:36",
+    durationSeconds: 96,
+    thumbnail: "/assets/images/thumb_elephant_march.png",
+    audioSrc: "/assets/audio/ellie_elephant_march.mp3",
+    downloaded: true
+  },
+  {
+    id: "rhyme_lion_roar",
+    type: "rhyme",
+    title: "Lion Roar Song",
+    category: "Animals",
+    duration: "1:30",
+    durationSeconds: 90,
+    thumbnail: "/assets/images/thumb_lion_roar.png",
+    audioSrc: "/assets/audio/lion_roar_song.mp3",
+    downloaded: false
+  }
+]
+
+STORY ITEMS:
+[
+  {
+    id: "story_little_lion",
+    type: "story",
+    title: "The Little Lion Learns to Roar",
+    category: "Animals",
+    duration: "4:12",
+    durationSeconds: 252,
+    thumbnail: "/assets/images/thumb_little_lion_story.png",
+    audioSrc: "/assets/audio/little_lion_learns_to_roar.mp3",
+    downloaded: false,
+    isPopular: true
+  },
+  {
+    id: "story_kind_elephant",
+    type: "story",
+    title: "Ellie the Kind Elephant",
+    category: "Animals",
+    duration: "5:08",
+    durationSeconds: 308,
+    thumbnail: "/assets/images/thumb_kind_elephant_story.png",
+    audioSrc: "/assets/audio/ellie_the_kind_elephant.mp3",
+    downloaded: true
+  },
+  {
+    id: "story_brave_bunny",
+    type: "story",
+    title: "The Brave Little Bunny",
+    category: "Animals",
+    duration: "4:36",
+    durationSeconds: 276,
+    thumbnail: "/assets/images/thumb_brave_bunny_story.png",
+    audioSrc: "/assets/audio/brave_little_bunny.mp3",
+    downloaded: false
+  },
+  {
+    id: "story_milo_monkey",
+    type: "story",
+    title: "Milo Monkey Shares",
+    category: "Animals",
+    duration: "3:58",
+    durationSeconds: 238,
+    thumbnail: "/assets/images/thumb_milo_monkey_story.png",
+    audioSrc: "/assets/audio/milo_monkey_shares.mp3",
+    downloaded: true
+  },
+  {
+    id: "story_butterfly_big_day",
+    type: "story",
+    title: "The Butterfly’s Big Day",
+    category: "Animals",
+    duration: "4:45",
+    durationSeconds: 285,
+    thumbnail: "/assets/images/thumb_butterfly_big_day.png",
+    audioSrc: "/assets/audio/butterfly_big_day.mp3",
+    downloaded: false
+  }
+]
+
+PLAYLISTS:
+[
+  {
+    id: "playlist_bedtime",
+    title: "Bedtime Mix",
+    coverImage: "/assets/images/playlist_bedtime_mix.png",
+    itemIds: [
+      "rhyme_twinkle",
+      "rhyme_sleepy_moon",
+      "rhyme_sleepy_bunny",
+      "story_starry_night",
+      "rhyme_soft_cloud"
+    ],
+    displayCount: "12 / 50",
+    totalDuration: "30 min"
+  },
+  {
+    id: "playlist_animal_fun",
+    title: "Animal Fun",
+    coverImage: "/assets/images/playlist_animal_fun.png",
+    itemIds: [
+      "rhyme_jungle_friends",
+      "rhyme_hop_bunny",
+      "rhyme_butterfly_dance",
+      "story_little_lion",
+      "story_kind_elephant"
+    ],
+    displayCount: "15 / 50",
+    totalDuration: "36 min"
+  },
+  {
+    id: "playlist_abc_time",
+    title: "ABC Time",
+    coverImage: "/assets/images/playlist_abc_time.png",
+    itemIds: [],
+    displayCount: "10 / 50",
+    totalDuration: "25 min"
+  },
+  {
+    id: "playlist_travel",
+    title: "Travel Tunes",
+    coverImage: "/assets/images/playlist_travel_tunes.png",
+    itemIds: [],
+    displayCount: "14 / 50",
+    totalDuration: "32 min"
+  },
+  {
+    id: "playlist_story_favorites",
+    title: "Story Favorites",
+    coverImage: "/assets/images/playlist_story_favorites.png",
+    itemIds: [],
+    displayCount: "18 / 50",
+    totalDuration: "45 min"
+  }
+]
+
+
+==================================================
+20. PLAYER MOCK DATA
+==================================================
+
+Player item:
+{
+  id: "rhyme_twinkle",
+  type: "rhyme",
+  title: "Twinkle Twinkle Little Star",
+  duration: "1:45",
+  durationSeconds: 105,
+  audioSrc: "/assets/audio/twinkle_twinkle_little_star.mp3"
+}
+
+Scenes:
+[
+  {
+    id: "scene_1",
+    number: 1,
+    start: 0,
+    end: 15,
+    image: "/assets/images/player_scene_1.png",
+    label: "Little Star"
+  },
+  {
+    id: "scene_2",
+    number: 2,
+    start: 15,
+    end: 35,
+    image: "/assets/images/player_scene_2.png",
+    label: "Night Sky"
+  },
+  {
+    id: "scene_3",
+    number: 3,
+    start: 35,
+    end: 55,
+    image: "/assets/images/player_scene_3.png",
+    label: "River Glow"
+  },
+  {
+    id: "scene_4",
+    number: 4,
+    start: 55,
+    end: 75,
+    image: "/assets/images/player_scene_4.png",
+    label: "Flower Hills"
+  },
+  {
+    id: "scene_5",
+    number: 5,
+    start: 75,
+    end: 105,
+    image: "/assets/images/player_scene_5.png",
+    label: "Good Night"
+  }
+]
+
+Transcript words:
+[
+  { word: "Twinkle", start: 16.0, end: 16.6, line: 1 },
+  { word: "twinkle", start: 16.6, end: 17.2, line: 1 },
+  { word: "little", start: 17.2, end: 17.8, line: 1 },
+  { word: "star", start: 17.8, end: 18.6, line: 1 },
+  { word: "How", start: 19.0, end: 19.5, line: 2 },
+  { word: "I", start: 19.5, end: 19.8, line: 2 },
+  { word: "wonder", start: 19.8, end: 20.5, line: 2 },
+  { word: "what", start: 20.5, end: 21.0, line: 2 },
+  { word: "you", start: 21.0, end: 21.3, line: 2 },
+  { word: "are", start: 21.3, end: 22.0, line: 2 }
+]
+
+For the prototype, only implement enough transcript timing to demonstrate the karaoke read-along effect.
+
+
+==================================================
+21. RESPONSIVENESS
+==================================================
+
+Primary target:
+Mobile portrait.
+
+Prototype should work best around:
+- 390 x 844
+- 393 x 852
+- 414 x 896
+- 430 x 932
+
+It can also be previewed on desktop but should remain mobile-first.
+
+Use:
+- fixed bottom dock
+- scrollable content area
+- safe padding above/below dock
+- no horizontal page overflow except category icon rows
+
+
+==================================================
+22. ACCESSIBILITY / READABILITY
+==================================================
+
+Important:
+- Use high contrast text
+- Avoid tiny labels
+- Use large controls
+- Keep max 2 transcript lines in player
+- Avoid text over busy image unless using a semi-opaque panel
+- Buttons should have clear labels
+- Use icons plus labels for child comprehension
+
+Player transcript:
+- Current word must be highly visible
+- Past/upcoming words must remain readable
+- Use large font size
+
+
+==================================================
+23. PROTOTYPE SUCCESS CRITERIA
+==================================================
+
+The prototype is successful if:
+1. Screens visually match the supplied screenshots in spirit and style.
+2. Navigation with the five-tab dock works.
+3. Rhymes and Stories have round horizontal category icons.
+4. Content list appears when category is selected.
+5. Kid Mode hides editing/export controls.
+6. Parent PIN unlocks Parent Mode.
+7. Parent Mode playlist editor shows add/rename/remove/reorder/export controls.
+8. Player screen shows scene image, transcript, word highlighting, progress, and controls.
+9. Register Toy and Verify OTP screens are present and clickable.
+10. All data and media are local/static only.
+
+
+==================================================
+24. DO NOT BUILD YET
+==================================================
+
+Do not build:
+- real backend integration
+- real OTP
+- real login/signup
+- real SD card export
+- real downloads
+- real background sync
+- real security layer
+- real device ownership
+- server transcript generation
+- server scene generation
+
+This is only an initial UX prototype/wireframe with local mock files.
